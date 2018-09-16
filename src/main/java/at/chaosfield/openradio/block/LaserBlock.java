@@ -35,6 +35,7 @@ public class LaserBlock extends BlockContainer implements ITileEntityProvider{
 
     public LaserBlock(){
         super(Material.IRON);                           //Material is like Iron
+        this.setRegistryName("laser");
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         setUnlocalizedName(OpenRadio.MODID + ".laser"); //Set unlocalized Block name (/src/main/resources/assets/openradio/lang/)
         setHardness(3.0F);                              //Set hardness to 3
@@ -138,7 +139,7 @@ public class LaserBlock extends BlockContainer implements ITileEntityProvider{
                         new ItemStack(item.getItem(), item.getCount(), item.getItemDamage()));
 
                 if (item.hasTagCompound()) {
-                    entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+                    entityItem.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
                 }
 
                 float factor = 0.05F;

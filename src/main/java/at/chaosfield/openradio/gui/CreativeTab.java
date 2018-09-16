@@ -12,14 +12,12 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import java.util.List;
-
 /**
  * Created by Jakob Riepler (XDjackieXD)
  */
 public class CreativeTab extends CreativeTabs{
     public static CreativeTab instance = new CreativeTab();
-    private NonNullList list;
+    private NonNullList<ItemStack> list;
 
     public CreativeTab(){
         super(OpenRadio.MODID);
@@ -30,26 +28,26 @@ public class CreativeTab extends CreativeTabs{
     public void displayAllRelevantItems(NonNullList<ItemStack> list){
         this.list = list;
 
-        this.addBlock(Blocks.laserBlock);
-        this.addBlock(Blocks.lensBlock1);
-        this.addBlock(Blocks.lensBlock2);
-        this.addBlock(Blocks.lensBlock3);
-        this.addBlock(Blocks.mirrorBlock);
+        this.addBlock(Blocks.LASER_BLOCK);
+        this.addBlock(Blocks.LENS_BLOCK_1);
+        this.addBlock(Blocks.LENS_BLOCK_2);
+        this.addBlock(Blocks.LENS_BLOCK_3);
+        this.addBlock(Blocks.MIRROR_BLOCK);
 
         //if(Loader.isModLoaded("appliedenergistics2"))
         //    this.addBlock(Blocks.aeencoderBlock);
 
-        this.addItem(Items.laserSocketItem);
-        this.addItem(Items.dspItem);
-        this.addItem(Items.adcItem);
-        this.addItem(Items.laserItem);
-        this.addItem(Items.photoReceptorItem);
-        this.addItem(Items.mirrorItem);
+        this.addItem(Items.LASER_SOCKET_ITEM);
+        this.addItem(Items.DSP_ITEM);
+        this.addItem(Items.ADC_ITEM);
+        this.addItem(Items.LASER_ITEM);
+        this.addItem(Items.PHOTO_RECEPTOR_ITEM);
+        this.addItem(Items.MIRROR_ITEM);
     }
 
     @Override
     public ItemStack getTabIconItem(){
-        return new ItemStack(Item.getItemFromBlock(Blocks.laserBlock));
+        return new ItemStack(Item.getItemFromBlock(Blocks.LASER_BLOCK));
     }
 
     @Override
@@ -58,10 +56,10 @@ public class CreativeTab extends CreativeTabs{
     }
 
     private void addItem(Item item){
-        item.getSubItems(item, this, list);
+        item.getSubItems(this, list);
     }
 
     private void addBlock(Block block){
-        block.getSubBlocks(new ItemStack(block).getItem(), this, list);
+        block.getSubBlocks(this, list);
     }
 }

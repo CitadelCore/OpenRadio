@@ -10,8 +10,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import java.util.List;
-
 /**
  * Created by Jakob Riepler (XDjackieXD)
  */
@@ -19,7 +17,7 @@ public class LaserItem extends Item{
     public LaserItem(){
         maxStackSize = 64;
         setUnlocalizedName(OpenRadio.MODID + ".laser");
-        setRegistryName("laserItem");
+        setRegistryName("laseritem");
         setHasSubtypes(true);
         setCreativeTab(CreativeTab.instance);
     }

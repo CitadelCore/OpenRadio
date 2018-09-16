@@ -1,12 +1,9 @@
 package at.chaosfield.openradio;
 
-import at.chaosfield.openradio.init.Blocks;
 import at.chaosfield.openradio.init.Crafting;
 import at.chaosfield.openradio.init.Entities;
-import at.chaosfield.openradio.init.Items;
 import at.chaosfield.openradio.gui.GuiHandler;
 import at.chaosfield.openradio.integration.Init;
-import at.chaosfield.openradio.integration.actuallyAdditions.BookletEntry;
 import at.chaosfield.openradio.proxy.CommonProxy;
 import at.chaosfield.openradio.util.Settings;
 import net.minecraftforge.fml.common.*;
@@ -21,7 +18,7 @@ import org.apache.logging.log4j.Logger;
  * Created by Jakob Riepler (XDjackieXD)
  */
 
-@Mod(name = "Open Radio", modid = OpenRadio.MODID, version = "0.9.5", modLanguage = "java", dependencies = "required-after:opencomputers")
+@Mod(name = "Open Radio", modid = OpenRadio.MODID, version = "0.9.6", modLanguage = "java", dependencies = "required-after:opencomputers@[1.7,)")
 public class OpenRadio{
 
     public static final String MODID = "openradio";
@@ -48,13 +45,9 @@ public class OpenRadio{
                 Init.loadedActAddVersion = Integer.parseInt(modAPI.getVersion());
             }
         }
-
-        Blocks.init();                  //Register all Blocks
-        Items.init();                   //Register all Items
+        
         proxy.preInit(event);           //Register Variants
-
         Init.preInitIntegration(event);
-
         logger.info(MODID + " pre init complete.");
     }
 

@@ -124,7 +124,7 @@ public class LaserEntity extends Entity implements IProjectile, IEntityAdditiona
 
 
         /**** Replace Super onUpdate because some not-needed stuff in there ****/
-        this.getEntityWorld().theProfiler.startSection("entityBaseTick");
+        this.getEntityWorld().profiler.startSection("entityBaseTick");
 
         this.prevDistanceWalkedModified = this.distanceWalkedModified;
         this.prevPosX = this.posX;
@@ -134,7 +134,7 @@ public class LaserEntity extends Entity implements IProjectile, IEntityAdditiona
         this.prevRotationYaw = this.rotationYaw;
 
         if(!this.getEntityWorld().isRemote && this.getEntityWorld() instanceof WorldServer){
-            this.getEntityWorld().theProfiler.startSection("portal");
+            this.getEntityWorld().profiler.startSection("portal");
             MinecraftServer minecraftserver = this.getEntityWorld().getMinecraftServer();
             int i = this.getMaxInPortalTime();
 
@@ -170,15 +170,15 @@ public class LaserEntity extends Entity implements IProjectile, IEntityAdditiona
                 --this.timeUntilPortal;
             }
 
-            this.getEntityWorld().theProfiler.endSection();
+            this.getEntityWorld().profiler.endSection();
         }
 
         if(this.posY < -64.0D){
-            this.kill();
+            this.setDead();
         }
 
         this.firstUpdate = false;
-        this.getEntityWorld().theProfiler.endSection();
+        this.getEntityWorld().profiler.endSection();
         /***********************************************************************/
 
 
@@ -211,7 +211,7 @@ public class LaserEntity extends Entity implements IProjectile, IEntityAdditiona
         }
 
         if(!this.getEntityWorld().isRemote){
-            List<Entity> list = this.getEntityWorld().getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().addCoord(this.motionX, this.motionY, this.motionZ));
+            List<Entity> list = this.getEntityWorld().getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(this.motionX, this.motionY, this.motionZ));
             for(Entity entity : list){
                 if(entity instanceof EntityLivingBase && entity.canBeCollidedWith()){
                     if(!(entity instanceof EntityPlayer && ((EntityPlayer) entity).isCreative()))
@@ -372,4 +372,10 @@ public class LaserEntity extends Entity implements IProjectile, IEntityAdditiona
         this.laserTier = additionalData.readInt();
         setTier(this.laserTier);
     }
+
+	@Override
+	public void shoot(double x, double y, double z, float velocity, float inaccuracy) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -30,6 +30,7 @@ public class LensBlock extends Block implements ILaserModifier{
 
     public LensBlock(int tier){
         super(Material.IRON);
+        this.setRegistryName("lenst" + tier);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         setUnlocalizedName(OpenRadio.MODID + ".lenst" + tier); //Set unlocalized Block name (/src/main/resources/assets/openradio/lang/)
         setHardness(3.0F);                             //Set hardness to 3

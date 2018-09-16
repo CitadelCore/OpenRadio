@@ -18,10 +18,10 @@ public class LaserContainer extends Container{
     public LaserContainer(IInventory inventoryPlayer, LaserTileEntity te){
         tileEntity = te;
 
-        addSlotToContainer(new RestrictedSlot(Items.dspItem, 1, tileEntity, LaserTileEntity.SLOT_DSP, 33, 27));     //DSP
-        addSlotToContainer(new RestrictedSlot(Items.photoReceptorItem, 1, tileEntity, LaserTileEntity.SLOT_PHOTO_RECEPTOR, 56, 27));    //PhotoReceptor
-        addSlotToContainer(new RestrictedSlot(Items.mirrorItem, 1, tileEntity, LaserTileEntity.SLOT_MIRROR, 89, 27));    //SemiReflectiveMirror
-        addSlotToContainer(new RestrictedSlot(Items.laserItem, 1, tileEntity, LaserTileEntity.SLOT_LASER, 89, 60));    //Laser
+        addSlotToContainer(new RestrictedSlot(Items.DSP_ITEM, 1, tileEntity, LaserTileEntity.SLOT_DSP, 33, 27));     //DSP
+        addSlotToContainer(new RestrictedSlot(Items.PHOTO_RECEPTOR_ITEM, 1, tileEntity, LaserTileEntity.SLOT_PHOTO_RECEPTOR, 56, 27));    //PhotoReceptor
+        addSlotToContainer(new RestrictedSlot(Items.MIRROR_ITEM, 1, tileEntity, LaserTileEntity.SLOT_MIRROR, 89, 27));    //SemiReflectiveMirror
+        addSlotToContainer(new RestrictedSlot(Items.LASER_ITEM, 1, tileEntity, LaserTileEntity.SLOT_LASER, 89, 60));    //Laser
 
         //commonly used vanilla code that adds the player's inventory
         bindPlayerInventory(inventoryPlayer);
@@ -62,19 +62,19 @@ public class LaserContainer extends Container{
                 }
             //Item is in Player inventory. Transfer into container
             }else if(slot >= tileEntity.getSizeInventory()){
-                if(stackInSlot.getItem() == Items.dspItem){
+                if(stackInSlot.getItem() == Items.DSP_ITEM){
                     if(!this.mergeItemStack(stackInSlot, LaserTileEntity.SLOT_DSP, LaserTileEntity.SLOT_DSP+1, false)){
                         return ItemStack.EMPTY;
                     }
-                }else if(stackInSlot.getItem() == Items.photoReceptorItem){
+                }else if(stackInSlot.getItem() == Items.PHOTO_RECEPTOR_ITEM){
                     if(!this.mergeItemStack(stackInSlot, LaserTileEntity.SLOT_PHOTO_RECEPTOR, LaserTileEntity.SLOT_PHOTO_RECEPTOR+1, false)){
                         return ItemStack.EMPTY;
                     }
-                }else if(stackInSlot.getItem() == Items.mirrorItem){
+                }else if(stackInSlot.getItem() == Items.MIRROR_ITEM){
                     if(!this.mergeItemStack(stackInSlot, LaserTileEntity.SLOT_MIRROR, LaserTileEntity.SLOT_MIRROR+1, false)){
                         return ItemStack.EMPTY;
                     }
-                }else if(stackInSlot.getItem() == Items.laserItem){
+                }else if(stackInSlot.getItem() == Items.LASER_ITEM){
                     if(!this.mergeItemStack(stackInSlot, LaserTileEntity.SLOT_LASER, LaserTileEntity.SLOT_LASER+1, false)){
                         return ItemStack.EMPTY;
                     }

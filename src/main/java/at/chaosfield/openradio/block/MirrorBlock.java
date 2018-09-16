@@ -31,6 +31,7 @@ public class MirrorBlock extends Block implements ILaserModifier{
     public static final PropertyInteger FACING_VERTICAL = PropertyInteger.create("facingv", 0, 3);
     public MirrorBlock(){
         super(Material.IRON);
+        this.setRegistryName("blockmirror");
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING_HORIZONTAL, EnumFacing.NORTH).withProperty(FACING_VERTICAL, 0));
         setUnlocalizedName(OpenRadio.MODID + ".blockmirror"); //Set unlocalized Block name (/src/main/resources/assets/openradio/lang/)
         setHardness(3.0F);                             //Set hardness to 3
