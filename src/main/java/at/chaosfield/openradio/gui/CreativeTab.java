@@ -28,26 +28,26 @@ public class CreativeTab extends CreativeTabs{
     public void displayAllRelevantItems(NonNullList<ItemStack> list){
         this.list = list;
 
-        this.addBlock(Blocks.LASER_BLOCK);
-        this.addBlock(Blocks.LENS_BLOCK_1);
-        this.addBlock(Blocks.LENS_BLOCK_2);
-        this.addBlock(Blocks.LENS_BLOCK_3);
-        this.addBlock(Blocks.MIRROR_BLOCK);
+        this.addBlock(Blocks.laserBlock);
+        this.addBlock(Blocks.lensBlock1);
+        this.addBlock(Blocks.lensBlock2);
+        this.addBlock(Blocks.lensBlock3);
+        this.addBlock(Blocks.mirrorBlock);
 
         //if(Loader.isModLoaded("appliedenergistics2"))
         //    this.addBlock(Blocks.aeencoderBlock);
 
-        this.addItem(Items.LASER_SOCKET_ITEM);
-        this.addItem(Items.DSP_ITEM);
-        this.addItem(Items.ADC_ITEM);
-        this.addItem(Items.LASER_ITEM);
-        this.addItem(Items.PHOTO_RECEPTOR_ITEM);
-        this.addItem(Items.MIRROR_ITEM);
+        this.addItem(Items.laserSocketItem);
+        this.addItem(Items.dspItem);
+        this.addItem(Items.adcItem);
+        this.addItem(Items.laserItem);
+        this.addItem(Items.photoReceptorItem);
+        this.addItem(Items.mirrorItem);
     }
 
     @Override
     public ItemStack getTabIconItem(){
-        return new ItemStack(Item.getItemFromBlock(Blocks.LASER_BLOCK));
+        return new ItemStack(Item.getItemFromBlock(Blocks.laserBlock));
     }
 
     @Override

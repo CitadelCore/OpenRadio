@@ -1,6 +1,9 @@
 package at.chaosfield.openradio.init;
 
 import at.chaosfield.openradio.item.*;
+
+import com.google.common.collect.ImmutableList;
+
 import at.chaosfield.openradio.OpenRadio;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
@@ -13,25 +16,34 @@ import net.minecraftforge.registries.IForgeRegistry;
  */
 @Mod.EventBusSubscriber(modid = OpenRadio.MODID)
 public class Items{
-    public static LaserSocketItem LASER_SOCKET_ITEM = new LaserSocketItem();
-    public static DSPItem DSP_ITEM = new DSPItem();
-    public static ADCItem ADC_ITEM = new ADCItem();
-    public static PhotoReceptorItem PHOTO_RECEPTOR_ITEM = new PhotoReceptorItem();
-    public static MirrorItem MIRROR_ITEM = new MirrorItem();
-    public static LaserItem LASER_ITEM = new LaserItem();
+    public static LaserSocketItem laserSocketItem;
+    public static DSPItem dspItem;
+    public static ADCItem adcItem;
+    public static PhotoReceptorItem photoReceptorItem;
+    public static MirrorItem mirrorItem;
+    public static LaserItem laserItem;
+    
+    public static void preInitItems() {
+    	laserSocketItem = new LaserSocketItem();
+    	dspItem = new DSPItem();
+    	adcItem = new ADCItem();
+    	photoReceptorItem = new PhotoReceptorItem();
+    	mirrorItem = new MirrorItem();
+    	laserItem = new LaserItem();
+    }
 
     //Register all items (Has to be called during FML Init)
     @SubscribeEvent
 	public static void registerItems(final RegistryEvent.Register<Item> event) {
     	final IForgeRegistry<Item> registry = event.getRegistry();
-    	final Item[] items = {
-    			LASER_SOCKET_ITEM,
-    			DSP_ITEM,
-    			PHOTO_RECEPTOR_ITEM,
-    			MIRROR_ITEM,
-    			LASER_ITEM,
-    	};
     	
-    	registry.registerAll(items);
+    	ImmutableList.of(
+    			laserSocketItem,
+    			dspItem,
+    			adcItem,
+    			photoReceptorItem,
+    			mirrorItem,
+    			laserItem
+    			).forEach(item -> registry.register(item));
     }
 }

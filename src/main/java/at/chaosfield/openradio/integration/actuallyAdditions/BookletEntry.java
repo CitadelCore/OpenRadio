@@ -14,7 +14,7 @@ public class BookletEntry{
         ActuallyAdditionsAPI.methodHandler.generateBookletChapter(
                 "openradio.laserrelay",
                 ActuallyAdditionsAPI.entryLaserRelays,
-                new ItemStack(Items.LASER_ITEM),
+                new ItemStack(Items.laserItem),
                 ActuallyAdditionsAPI.methodHandler.generatePicturePage(1, new ResourceLocation(OpenRadio.MODID, "textures/gui/actaddpagelaserrelay.png"), 118).addTextReplacement("<laserMaxDistance>", Integer.toString((int) ((OpenRadio.instance.settings.LensMultiplierTier[2] + 1) * 2 * OpenRadio.instance.settings.LaserMaxDistanceTier[2])))
         );
     }

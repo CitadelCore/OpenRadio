@@ -1,7 +1,9 @@
 package at.chaosfield.openradio;
 
+import at.chaosfield.openradio.init.Blocks;
 import at.chaosfield.openradio.init.Crafting;
 import at.chaosfield.openradio.init.Entities;
+import at.chaosfield.openradio.init.Items;
 import at.chaosfield.openradio.gui.GuiHandler;
 import at.chaosfield.openradio.integration.Init;
 import at.chaosfield.openradio.proxy.CommonProxy;
@@ -48,6 +50,35 @@ public class OpenRadio{
         
         proxy.preInit(event);           //Register Variants
         Init.preInitIntegration(event);
+        
+        Items.preInitItems();
+        Blocks.preInitBlocks();
+        
+        // Tiered items
+        proxy.registerItemModel(Items.dspItem, 0, "openradio:dspt1");
+        proxy.registerItemModel(Items.dspItem, 1, "openradio:dspt2");
+        proxy.registerItemModel(Items.dspItem, 2, "openradio:dspt3");
+        
+        proxy.registerItemModel(Items.adcItem, 0, "openradio:adct1");
+        proxy.registerItemModel(Items.adcItem, 1, "openradio:adct2");
+        proxy.registerItemModel(Items.adcItem, 2, "openradio:adct3");
+        
+        proxy.registerItemModel(Items.laserItem, 0, "openradio:lasert1");
+        proxy.registerItemModel(Items.laserItem, 1, "openradio:lasert2");
+        proxy.registerItemModel(Items.laserItem, 2, "openradio:lasert3");
+        
+        // Misc items
+        proxy.registerItemModel(Items.mirrorItem, 0, "openradio:mirror");
+        proxy.registerItemModel(Items.laserSocketItem, 0, "openradio:lasersocket");
+        proxy.registerItemModel(Items.photoReceptorItem, 0, "openradio:photoreceptor");
+        
+        // Blocks
+        proxy.registerItemModel(Blocks.laserBlock, 0, "openradio:laser");
+        proxy.registerItemModel(Blocks.lensBlock1, 0, "openradio:lenst1");
+        proxy.registerItemModel(Blocks.lensBlock2, 0, "openradio:lenst2");
+        proxy.registerItemModel(Blocks.lensBlock3, 0, "openradio:lenst3");
+        proxy.registerItemModel(Blocks.mirrorBlock, 0, "openradio:blockmirror");
+        
         logger.info(MODID + " pre init complete.");
     }
 

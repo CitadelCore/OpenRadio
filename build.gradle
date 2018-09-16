@@ -32,7 +32,7 @@ minecraft {
 
 repositories {
     maven {
-        name = "OpenComputers"
+        name = "mightypirates"
         url = "http://maven.cil.li/"
     }
     maven {
@@ -42,8 +42,9 @@ repositories {
 }
 
 dependencies {
-    compile "li.cil.oc:OpenComputers:MC1.12.2-1.7.+"
-    compile "de.ellpeck.actuallyadditions:ActuallyAdditions:1.12.2-r140"
+    compile files("lib/appliedenergistics2-rv5-stable-11-api.jar")
+    provided "li.cil.oc:OpenComputers:MC1.12.2-1.7.+"
+    provided "de.ellpeck.actuallyadditions:ActuallyAdditions:1.12.2-r140"
 }
 
 processResources

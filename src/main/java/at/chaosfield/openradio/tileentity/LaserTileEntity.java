@@ -161,7 +161,7 @@ public class LaserTileEntity extends TileEntityEnvironment implements IInventory
 
         LaserEntity laserEntity = new LaserEntity(this.getWorld(), posX, posY, posZ, accX, accY, accZ,
                 this.getWorld().provider.getDimension(), this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), getMaxDistance(),
-                getItemTier(SLOT_LASER, Items.LASER_ITEM));
+                getItemTier(SLOT_LASER, Items.laserItem));
 
         this.getWorld().spawnEntity(laserEntity);
     }
@@ -203,10 +203,10 @@ public class LaserTileEntity extends TileEntityEnvironment implements IInventory
                 inv[SLOT_PHOTO_RECEPTOR] != ItemStack.EMPTY &&
                 inv[SLOT_MIRROR] != ItemStack.EMPTY &&
                 inv[SLOT_LASER] != ItemStack.EMPTY &&
-                inv[SLOT_DSP].getItem() == Items.DSP_ITEM &&
-                inv[SLOT_PHOTO_RECEPTOR].getItem() == Items.PHOTO_RECEPTOR_ITEM &&
-                inv[SLOT_MIRROR].getItem() == Items.MIRROR_ITEM &&
-                inv[SLOT_LASER].getItem() == Items.LASER_ITEM;
+                inv[SLOT_DSP].getItem() == Items.dspItem &&
+                inv[SLOT_PHOTO_RECEPTOR].getItem() == Items.photoReceptorItem &&
+                inv[SLOT_MIRROR].getItem() == Items.mirrorItem &&
+                inv[SLOT_LASER].getItem() == Items.laserItem;
     }
 
     public void connectAddon(String name, ILaserAddon addon, EnumFacing side){
@@ -239,7 +239,7 @@ public class LaserTileEntity extends TileEntityEnvironment implements IInventory
 
     public double getMaxDistance(){
         if(hasNeededComponents()){
-            return OpenRadio.instance.settings.LaserMaxDistanceTier[getItemTier(SLOT_LASER, Items.LASER_ITEM) - 1];
+            return OpenRadio.instance.settings.LaserMaxDistanceTier[getItemTier(SLOT_LASER, Items.laserItem) - 1];
         }else{
             return 0;
         }
@@ -256,7 +256,7 @@ public class LaserTileEntity extends TileEntityEnvironment implements IInventory
     public double calculateBasicEnergyUsage(){
         int usage = 0;
         if(hasNeededComponents()){
-            usage += OpenRadio.instance.settings.EnergyUseLaserTier[getItemTier(SLOT_LASER, Items.LASER_ITEM) - 1];
+            usage += OpenRadio.instance.settings.EnergyUseLaserTier[getItemTier(SLOT_LASER, Items.laserItem) - 1];
         }
         return usage;
     }
@@ -481,13 +481,13 @@ public class LaserTileEntity extends TileEntityEnvironment implements IInventory
     public boolean isItemValidForSlot(int slot, ItemStack itemStack){
         switch(slot){
             case 0:
-                return itemStack.getItem() == Items.DSP_ITEM;
+                return itemStack.getItem() == Items.dspItem;
             case 1:
-                return itemStack.getItem() == Items.PHOTO_RECEPTOR_ITEM;
+                return itemStack.getItem() == Items.photoReceptorItem;
             case 2:
-                return itemStack.getItem() == Items.MIRROR_ITEM;
+                return itemStack.getItem() == Items.mirrorItem;
             case 3:
-                return itemStack.getItem() == Items.LASER_ITEM;
+                return itemStack.getItem() == Items.laserItem;
             default:
                 return false;
         }
